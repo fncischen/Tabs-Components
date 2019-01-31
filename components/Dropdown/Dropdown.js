@@ -14,14 +14,11 @@ class Dropdown {
     this.button.addEventListener('click', () => this.toggleContent());
   }
 
-  toggleContent() {
-    
+  toggleContent() {    
     // Toggle the ".dropdown-hidden" class off and on
       this.content.classList.toggle("dropdown-hidden");
-
-    
-
   }
+  
 }
 
 

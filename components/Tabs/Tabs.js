@@ -45,12 +45,17 @@ class TabItem {
     const items = document.querySelectorAll(".tabs-item");
 
     // Remove the class "tabs-item-selected" from each element
-    items.forEach(item => item.classList.remove(".tabs-item-selected"));
+    items.forEach(item => item.classList.remove("tabs-item-selected"));
 
     // Add a class named "tabs-item-selected" to this element
-    this.element.classList.add(".tabs-item-selected");
+    this.element.classList.add("tabs-item-selected");
   }
 }
+
+// Stretch Goals
+
+
+//
 
 /* START HERE: 
 
