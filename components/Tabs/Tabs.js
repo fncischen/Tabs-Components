@@ -59,6 +59,7 @@ class Tabs {
     // declare local variables.
     this.tabLinksArray = []
     this.tabItemsArray = document.querySelectorAll(".tabs-item");
+
     this.currentlySelectedLink = null;
     this.currentlySelectedTab = null; 
 
@@ -77,8 +78,8 @@ class Tabs {
     // set reference to currently clicked tabLink
     this.currentlySelected = event.target; 
     // set reference to currently selected tab item 
-    let itemNumber = currentlySelected.dataset.tab;
-    this.currentlySelectedTab = tabItemsArray.querySelector(`.tabs-item[data-tab='${itemNumber}']`);
+    let itemNumber = this.currentlySelected.dataset.tab;
+    this.currentlySelectedTab = document.querySelector(`.tabs-item[data-tab='${itemNumber}']`);
 
     // retrieve all tablinks & deselect them all by removing "tabs-link-selected class"
     this.tabLinksArray.forEach(tabLink => tabLink.element.classList.remove("tabs-link-selected"));
@@ -87,7 +88,7 @@ class Tabs {
     this.tabItemsArray.forEach(item => item.classList.remove("tabs-item-selected"));
     
     // set class of currentlySelected as "tabs-link-selected"
-    this.currentlySelected.element.classList.add("tabs-link-selected");
+    this.currentlySelected.classList.add("tabs-link-selected");
 
     // set class of currently selected tab item as "tabs-item-selected"
     this.currentlySelectedTab.classList.add("tabs-item-selected");
