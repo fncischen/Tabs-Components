@@ -34,6 +34,7 @@ class TabLink {
 }
 
 class TabItem {
+  
   constructor(element) {
     // Assign this.element to the passed in element
     this.element = element;
@@ -50,10 +51,52 @@ class TabItem {
     // Add a class named "tabs-item-selected" to this element
     this.element.classList.add("tabs-item-selected");
   }
+
 }
 
 // Stretch Goals
+class Tabs {
+  constructor(){
+    
+    // declare local variables.
+    this.tabLinksArray = []
+    this.tabItemsArray = document.querySelectorAll(".tabs-item");
+    this.currentlySelectedLink = null;
+    this.currentlySelectedTab = null; 
 
+    // retrieve all tabLinks
+    let tablinks = document.querySelectorAll(".tabs-link");
+    // create instance of tabLink and add to tabLinks array;
+    tablinks.forEach(tablink => this.tabLinksArray.push( new TabLink(tablink)));
+
+    // add event listeners 
+    this.tabLinksArray.forEach(tabLink => tabLink.addEventListener("click", () => Deselect()));
+
+  }
+
+  deselect(event) {
+
+    // set reference to currently clicked tabLink
+    this.currentlySelected = event.target; 
+    // set reference to currently selected tab item 
+    let itemNumber = currentlySelected.dataset.tab;
+    this.currentlySelectedTab = tabItemsArray.querySelector(`.tabs-item[data-tab='${itemNumber}']`);
+
+    // retrieve all tablinks & deselect them all by removing "tabs-link-selected class"
+    this.tabLinksArray.forEach(tabLink => tabLink.element.classList.remove("tabs-link-selected"));
+    
+    // Remove the class "tabs-item-selected" from each element
+    this.tabItemsArray.forEach(item => item.classList.remove("tabs-item-selected"));
+    
+    // set class of currentlySelected as "tabs-link-selected"
+    this.currentlySelected.element.classList.add("tabs-link-selected");
+
+    // set class of currently selected tab item as "tabs-item-selected"
+    this.currentlySelectedTab.classList.add("tabs-item-selected");
+    
+  }
+
+}
 
 //
 
@@ -69,3 +112,5 @@ class TabItem {
 
 links = document.querySelectorAll(".tabs-link");
 links.forEach(tabslink => new TabLink(tabslink));
+
+let tabs = new Tabs();
